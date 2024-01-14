@@ -1,0 +1,26 @@
+<mat-toolbar class="row blue-background">
+  <div class="row d-flex align-items-center justify-content-between">
+  <div  class="col-md-4 d-flex align-items-center justify-content-start">
+  <button (click)="home()" mat-icon-button >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="mt-1">App Title</span>
+</div>
+<div class="d-flex col-md-8 align-items-center justify-content-end">
+  <span routerLinkActive="active" *ngIf="!auth.isLoggedIn()" [routerLink]="'/register'">Register</span>
+  <span routerLinkActive="active" *ngIf="!auth.isLoggedIn()" [routerLink]="'/login'" class="ms-5">Login</span>
+  <span routerLinkActive="active" *ngIf="auth.isLoggedIn()" [routerLink]="'/products'" class="ms-5">products</span>
+  <button class="me-5" *ngIf="auth.isLoggedIn()" [matMenuTriggerFor]="menu" mat-icon-button>
+  <mat-icon>user</mat-icon> Profile
+ </button>
+ <mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="logOut()">Log out</button>
+  <button mat-menu-item routerLink="/my-profile">MyProfile</button>
+  <button mat-menu-item routerLink="/wishlist">Wishlist</button>
+</mat-menu>
+</div>
+</div>
+</mat-toolbar>
+<div class="row">
+  <router-outlet></router-outlet>
+</div>

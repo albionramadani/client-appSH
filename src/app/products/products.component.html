@@ -1,0 +1,42 @@
+<!-- Your table with 5 columns -->
+<div class="row d-flex align-items-center justify-content-end">
+  <div class="col-md-1 mb-2">
+    <button *ngIf="!asWishList" mat-raised-button color="Primary" (click)="openAddProductForm()">Add Product</button>
+  </div>
+</div>
+
+
+<table class="col-md-12">
+  <thead>
+    <tr>
+      <th class="blue-background col-md-3">Product Name</th>
+      <th class=" blue-background col-md-3">Price</th>
+      <th class="blue-background col-md-3">Description</th>
+      <th class="blue-background col-md-3">Favorite</th>
+      <th class="blue-background col-md-3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="col-md-12" *ngFor="let product of products">
+      <td class="col-md-3">{{ product.name }}</td>
+      <td class="col-md-3">{{ product.price  }}</td>
+      <td class="col-md-3">{{ product.description }}</td>
+      <td class="col-md-3">
+        <mat-icon (click)="toggle(product.id)" [style.color]="product.isFavorite ? 'red' : 'black'">
+          {{ product.isFavorite ? 'favorite' : 'favorite_border' }}
+        </mat-icon>
+        </td>
+      <td class="col-md-3 d-flex flex-row align-items-center justify-content-center">
+        <button (click)="editProduct(product)" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+         <button mat-raised-button color="warn" (click)="deleteProduct(product)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Add Product button -->
+
+<!-- Add Product Form -->
+<!-- ... (add form with input fields, date picker, and buttons) -->
